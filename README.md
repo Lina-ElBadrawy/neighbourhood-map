@@ -29,6 +29,19 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### `npm run eject`
 
+
+
+https://foursquare.com/developers/apps
+Client ID
+IURVSO1HQVII1UV5ZAMOCMDXQSMSPQO1LPTTSDC5OSEYAJFG
+Client Secret
+NCHE0MDBXS5AUHIFZEWY4O33PF14QEKVSKG1BQB54ZBTA12D
+
+        var url = "https://api.foursquare.com/v2/venues/search?client_id=" + clientId + "&client_secret=" + clientSecret + "&v=20130815&ll=" + marker.getPosition().lat() + "," + marker.getPosition().lng() + "&limit=1";
+key :
+
+https://console.cloud.google.com/apis/credentials?project=udacity-maps-project-224215
+
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
