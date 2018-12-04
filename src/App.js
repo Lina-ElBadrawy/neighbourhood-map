@@ -20,7 +20,7 @@ class App extends Component {
 
   componentDidMount() {
     if (!this.state.dataLoaded) {
-      Api.getData("cairo", "burger").then(response => {
+      Api.getData("cairo", "pizza").then(response => {
         this.setState({ locations: response });
         this.setState({ filteredLocations: response });
         let cities = this.state.locations.map((l) => {
@@ -69,7 +69,7 @@ class App extends Component {
       <div className="app">
         <div className="left-Panel">
           <header>
-            <h3>Cairo Burger Restaurants</h3>
+            <h3>Cairo Pizza Restaurants</h3>
           </header>
           <Filter
 
