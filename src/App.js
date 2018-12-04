@@ -10,7 +10,7 @@ class App extends Component {
 
   state = {
     locations: [],
-   
+
 
   }
 
@@ -23,23 +23,20 @@ class App extends Component {
     );
   }
 
-  showInfoWindow=(location)=>{
+  showInfoWindow = (location) => {
     this.setState((state) => ({
-      locations: state.locations.map(l => ({ ...l, show: (!location.show  && l.venue.id === location.id) }))
-      /*locations: state.locations.map(l => {
-        console.log(l);
-        if(l.venue.name==location.name){
-          l.show=!l.show;
-        }
+
+      locations: state.locations.map(l => {
+        l.show = !location.show && l.venue.id === location.id
         return l
-      })*/
+      })
     }));
 
-}
- 
+  }
+
 
   render() {
-    const filteredLocations= this.state.locations;
+    const filteredLocations = this.state.locations;
     return (
       <div className="app">
         <Filter></Filter>
