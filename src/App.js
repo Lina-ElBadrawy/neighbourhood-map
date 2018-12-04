@@ -41,6 +41,7 @@ class App extends Component {
         <Filter></Filter>
         <ListView
          locations={filteredLocations}
+         showInfoWindow={this.showInfoWindow}
         ></ListView>
         <Map
           locations={filteredLocations}
