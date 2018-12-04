@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
-const MAP_CENTER = { lat: 30.0444, lng: 31.2357 }; //cairo
+const MAP_CENTER = { lat: 30.0597203445974, lng: 31.221991181373593 }; //cairo
 const DEFAULT_ZOOM = 15;
 //30.0444° N, 31.2357° E
 //30.0609° N, 31.2197
@@ -17,12 +17,14 @@ const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
                 <Marker
                     key={location.venue.id}
                     position={location.venue.location}
-                    onClick={() => props.showInfoWindow(location)}
+                    onClick={() => props.showInfoWindow(location.venue)}
                 >
-                    {location.show && <InfoWindow onCloseClick={() => props.showInfoWindow(location)}>
+                    {location.show && <InfoWindow onCloseClick={() => props.showInfoWindow(location.venue)}>
                         <div className="info-window">
                             <h2 className="loc-title">{location.venue.name}</h2>
-                            <p className="loc-details">{location.venue.location.address}</p>
+                            <div className="loc-details">{location.venue.location.address}</div>
+                            <div className="loc-details">lat - {location.venue.location.lat}</div>
+                            <div className="loc-details">lng - {location.venue.location.lng}</div>
                         </div>
                     </InfoWindow>}
 

@@ -1,7 +1,7 @@
 .results-map{
-  position:fixed;
+  position:absolute;
   top:0;
   right: 0;
   width:1000px;
-  height:1000px;
+  height:100vh;
 }

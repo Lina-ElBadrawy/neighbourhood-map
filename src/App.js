@@ -25,7 +25,14 @@ class App extends Component {
 
   showInfoWindow=(location)=>{
     this.setState((state) => ({
-      locations: state.locations.map(l => ({ ...l, show: !location.show && l.name === location.name }))
+      locations: state.locations.map(l => ({ ...l, show: (!location.show  && l.venue.id === location.id) }))
+      /*locations: state.locations.map(l => {
+        console.log(l);
+        if(l.venue.name==location.name){
+          l.show=!l.show;
+        }
+        return l
+      })*/
     }));
 
 }
