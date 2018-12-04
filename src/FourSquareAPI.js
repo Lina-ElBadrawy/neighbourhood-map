@@ -6,7 +6,7 @@ export function getData(location,query) {
    let locations=[];
 
  
-     return  fetch(`https://api.foursquare.com/v2/venues/explore?near=${location}&query=${query}&limit=10` +
+     return  fetch(`https://api.foursquare.com/v2/venues/explore?near=${location}&query=${query}&limit=50` +
         `&client_id=${clientId}` +
         `&client_secret=${clientSecret}` +
         `&v=20181201`)

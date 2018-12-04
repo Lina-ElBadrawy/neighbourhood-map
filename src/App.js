@@ -16,7 +16,7 @@ class App extends Component {
 
 
   componentDidMount() {
-    Api.getData("zamalek", "burger").then(response => {
+    Api.getData("cairo", "burger").then(response => {
       this.setState({ locations: response });
       console.log(this.state.locations);
     }
@@ -32,16 +32,29 @@ class App extends Component {
     }));
 
   }
+  filterLocationsList = (city) => {
+    console.log("lina")
+    this.setState((state) => ({
+      locations: state.locations.filter((l) => (l.venue.location.city === city))
+
+    }))
+    console.log(this.state.locations);
+  }
 
 
   render() {
     const filteredLocations = this.state.locations;
     return (
       <div className="app">
-        <Filter></Filter>
+        <Filter
+          locations={filteredLocations}
+          filterLocationsList={this.filterLocationsList}
+        >
+
+        </Filter>
         <ListView
-         locations={filteredLocations}
-         showInfoWindow={this.showInfoWindow}
+          locations={filteredLocations}
+          showInfoWindow={this.showInfoWindow}
         ></ListView>
         <Map
           locations={filteredLocations}
