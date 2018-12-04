@@ -36,10 +36,6 @@ class App extends Component {
         console.log("dataLoaded", this.state.dataLoaded)
         console.log("loadFailed", this.state.loadFailed)
         console.log("API: ", this.state.locations);
-      },error=>{
-       
-
-        
       }
       ).catch(error => {
        alert("loading failed")
