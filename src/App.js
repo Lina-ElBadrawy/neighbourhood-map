@@ -12,7 +12,8 @@ class App extends Component {
     locations: [],
     filteredLocations: [],
     cities: [],
-    dataLoaded: false
+    dataLoaded: false,
+   
 
 
   }
@@ -31,9 +32,19 @@ class App extends Component {
           cities: [...new Set(cities)]
         });
         this.setState({ dataLoaded: true });
+        
+        console.log("dataLoaded", this.state.dataLoaded)
+        console.log("loadFailed", this.state.loadFailed)
         console.log("API: ", this.state.locations);
+      },error=>{
+       
+
+        
       }
-      );
+      ).catch(error => {
+       alert("loading failed")
+
+      });
     }
 
 
@@ -67,28 +78,35 @@ class App extends Component {
     const cities = this.state.cities;
     return (
       <div className="app">
-        <div className="left-Panel">
-          <header>
-            <h3>Cairo Pizza Restaurants</h3>
-          </header>
-          <Filter
+        {this.state.dataLoaded && (
+          <div className="left-Panel">
+            <header>
+              <h3>Cairo Pizza Restaurants</h3>
+            </header>
+            <Filter
 
-            cities={cities}
-            filterLocationsList={this.filterLocationsList}
-          >
+              cities={cities}
+              filterLocationsList={this.filterLocationsList}
+            >
 
-          </Filter>
-          <ListView
-            locations={filteredLocations}
-            showInfoWindow={this.showInfoWindow}
-          ></ListView>
-           </div>
+            </Filter>
+            <ListView
+              locations={filteredLocations}
+              showInfoWindow={this.showInfoWindow}
+            ></ListView>
+          </div>)}
+        
+        {this.state.dataLoaded && (
           <Map
             locations={filteredLocations}
             showInfoWindow={this.showInfoWindow}
-          ></Map>
-        </div>
-     
+          ></Map>)
+        }
+         { !this.state.dataLoaded &&(
+           <h3>Loading ..</h3>
+         )}
+      </div>
+
     );
   }
 }
