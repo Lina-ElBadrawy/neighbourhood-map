@@ -18,8 +18,8 @@ class Filter extends Component {
     
       let uniqueCities = [...new Set(cities)];
       return (
-        <header className="filter">
-          <select  onChange={ (event=>filterLocationsList(event.target.value))} >
+        <section className="filter-section">
+          <select className="select"  onChange={ (event=>filterLocationsList(event.target.value))} >
           <option value="select">Select</option>
           {cities.map((city) => (
             <option key={city} className="loc-list-item" value={city}
@@ -29,7 +29,7 @@ class Filter extends Component {
           ))
           }
           </select>
-        </header>
+        </section>
       );
     }
   }

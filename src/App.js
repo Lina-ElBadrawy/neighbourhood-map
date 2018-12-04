@@ -30,7 +30,7 @@ class App extends Component {
         this.setState({
           cities: [...new Set(cities)]
         });
-       this.setState( {dataLoaded:true});
+        this.setState({ dataLoaded: true });
         console.log("API: ", this.state.locations);
       }
       );
@@ -67,22 +67,28 @@ class App extends Component {
     const cities = this.state.cities;
     return (
       <div className="app">
-        <Filter
+        <div className="left-Panel">
+          <header>
+            <h3>Cairo Burger Restaurants</h3>
+          </header>
+          <Filter
 
-          cities={cities}
-          filterLocationsList={this.filterLocationsList}
-        >
+            cities={cities}
+            filterLocationsList={this.filterLocationsList}
+          >
 
-        </Filter>
-        <ListView
-          locations={filteredLocations}
-          showInfoWindow={this.showInfoWindow}
-        ></ListView>
-        <Map
-          locations={filteredLocations}
-          showInfoWindow={this.showInfoWindow}
-        ></Map>
-      </div>
+          </Filter>
+          <ListView
+            locations={filteredLocations}
+            showInfoWindow={this.showInfoWindow}
+          ></ListView>
+           </div>
+          <Map
+            locations={filteredLocations}
+            showInfoWindow={this.showInfoWindow}
+          ></Map>
+        </div>
+     
     );
   }
 }

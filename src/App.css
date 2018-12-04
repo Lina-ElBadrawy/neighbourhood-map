@@ -1,7 +1,49 @@
+body{
+  background-color: #000000;
+  color: rgb(141, 151, 154);
+  font-family:"Open Sans", Helvetica, sans-serif;
+font-size:14px;
+font-style:normal
+
+}
+.app{
+  display: flex;
+  flex-direction: row;
+ 
+}
+.left-Panel{
+  width:20%;
+}
 .neighborhood-map{
-  position:absolute;
-  top:0;
-  right: 0;
-  width:75vw;
+ 
+  width:calc(100% - 20%);
   height:100vh;
+}
+.filter-section .select{
+  width:100%;
+}
+.list-secion{
+  width:100%;
+ 
+
+}
+.loc-list-view{
+  padding:0;
+  margin: 0;
+  width:100%;
+  list-style: none;
+  
+}
+.loc-list-item{
+  display: inline-block;
+  padding: 10px 0px 10px 10px;
+  text-align: left;
+ /* border-bottom: 1px groove;*/
+  width:100%;
+  cursor: pointer;
+  
+}
+.selected{
+  background-color:rgb(50,50,50);
+  color: #fff;
 }
