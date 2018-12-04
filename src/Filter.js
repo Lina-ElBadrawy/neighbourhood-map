@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 
 
 class Filter extends Component {
-   state={
+  /* state={
     value:'select'
   }
-  /*change(event){
+  change(event){
     debugger;
     let city=event.target.value
    // this.setState({value:city});
@@ -13,17 +13,15 @@ class Filter extends Component {
   }*/
     render() {
       const { locations, 
+        cities,
         filterLocationsList} = this.props;
-      let cities = locations.map((l)=>{
-        return l.venue.location.city
-         
-      });
+    
       let uniqueCities = [...new Set(cities)];
       return (
         <header className="filter">
           <select  onChange={ (event=>filterLocationsList(event.target.value))} >
           <option value="select">Select</option>
-          {uniqueCities.map((city) => (
+          {cities.map((city) => (
             <option key={city} className="loc-list-item" value={city}
             >
             {city}

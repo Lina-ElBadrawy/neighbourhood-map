@@ -10,17 +10,33 @@ class App extends Component {
 
   state = {
     locations: [],
+    filteredLocations: [],
+    cities: [],
+    dataLoaded: false
 
 
   }
 
 
   componentDidMount() {
-    Api.getData("cairo", "burger").then(response => {
-      this.setState({ locations: response });
-      console.log(this.state.locations);
+    if (!this.state.dataLoaded) {
+      Api.getData("cairo", "burger").then(response => {
+        this.setState({ locations: response });
+        this.setState({ filteredLocations: response });
+        let cities = this.state.locations.map((l) => {
+          return l.venue.location.city
+
+        });
+        this.setState({
+          cities: [...new Set(cities)]
+        });
+       this.setState( {dataLoaded:true});
+        console.log("API: ", this.state.locations);
+      }
+      );
     }
-    );
+
+
   }
 
   showInfoWindow = (location) => {
@@ -33,21 +49,27 @@ class App extends Component {
 
   }
   filterLocationsList = (city) => {
-    console.log("lina")
-    this.setState((state) => ({
-      locations: state.locations.filter((l) => (l.venue.location.city === city))
+    if (city != "select") {
+      this.setState((state) => ({
+        filteredLocations: state.locations.filter((l) => (l.venue.location.city === city))
+      }))
+    }
+    else this.setState({ filteredLocations: this.state.locations });
 
-    }))
-    console.log(this.state.locations);
+    console.log(this.state.filteredLocations);
   }
 
 
   render() {
-    const filteredLocations = this.state.locations;
+    const locations = this.state.locations;
+    const filteredLocations = this.state.filteredLocations;
+
+    const cities = this.state.cities;
     return (
       <div className="app">
         <Filter
-          locations={filteredLocations}
+
+          cities={cities}
           filterLocationsList={this.filterLocationsList}
         >
 
