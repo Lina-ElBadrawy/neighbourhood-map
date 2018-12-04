@@ -105,13 +105,15 @@ header{
     height: 100vh;
    
   }
-  
+  .loc-list-item {
+    font-weight: 600;
+}
 }
 @media screen and (max-width: 1279px) {
   .loc-list-item {
   
     padding: 10px 0px 10px 5px; 
-    font-weight: 600;
+    
 }
 }
 
