@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from "react-google-maps"
-const MAP_CENTER = { lat: 30.0597203445974, lng: 31.221991181373593 }; //cairo
-const DEFAULT_ZOOM = 15;
+const mapCenter = { lat: 30.0597203445974, lng: 31.221991181373593 }; //cairo
+const defaultZoom = 15;
+const orangeMarker = 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png';
+const redMarker = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
 //30.0444° N, 31.2357° E
 //30.0609° N, 31.2197
 const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
@@ -18,6 +20,7 @@ const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
                     key={location.venue.id}
                     position={location.venue.location}
                     onClick={() => props.showInfoWindow(location.venue)}
+                    icon={location.show ? orangeMarker :redMarker }
                 >
                     {location.show && <InfoWindow onCloseClick={() => props.showInfoWindow(location.venue)}>
                         <div className="info-window">
@@ -26,9 +29,6 @@ const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
                            
                         </div>
                     </InfoWindow>}
-
-
-
                 </Marker>
             )
         })}
@@ -44,8 +44,8 @@ class Map extends Component {
                 <NeighborhoodMap
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZAbwugFgW53Lj6TtVYuBrM8H8kSf9I-I"
                     locations={this.props.locations}
-                    zoom={DEFAULT_ZOOM}
-                    center={MAP_CENTER}
+                    zoom={defaultZoom}
+                    center={mapCenter}
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div style={{ height: `100%` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
