@@ -25,7 +25,6 @@ class App extends Component {
 
   showInfoWindow = (location) => {
     this.setState((state) => ({
-
       locations: state.locations.map(l => {
         l.show = !location.show && l.venue.id === location.id
         return l
@@ -40,7 +39,9 @@ class App extends Component {
     return (
       <div className="app">
         <Filter></Filter>
-        <ListView></ListView>
+        <ListView
+         locations={filteredLocations}
+        ></ListView>
         <Map
           locations={filteredLocations}
           showInfoWindow={this.showInfoWindow}

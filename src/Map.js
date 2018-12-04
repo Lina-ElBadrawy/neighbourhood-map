@@ -41,7 +41,7 @@ const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
 class Map extends Component {
     render() {
         return (
-            <div className="results-map" role="region" aria-label="Google Map.">
+            <div className="neighborhood-map" role="city" aria-label="Google Map.">
                 <NeighborhoodMap
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZAbwugFgW53Lj6TtVYuBrM8H8kSf9I-I"
                     locations={this.props.locations}
