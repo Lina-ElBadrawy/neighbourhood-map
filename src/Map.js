@@ -23,8 +23,7 @@ const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
                         <div className="info-window">
                             <h2 className="loc-title">{location.venue.name}</h2>
                             <div className="loc-details">{location.venue.location.address}</div>
-                            <div className="loc-details">lat - {location.venue.location.lat}</div>
-                            <div className="loc-details">lng - {location.venue.location.lng}</div>
+                           
                         </div>
                     </InfoWindow>}
 
@@ -41,7 +40,7 @@ const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
 class Map extends Component {
     render() {
         return (
-            <div className="neighborhood-map" role="city" aria-label="Google Map.">
+            <section className="neighborhood-map" role="city" aria-label="Google Map.">
                 <NeighborhoodMap
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyAZAbwugFgW53Lj6TtVYuBrM8H8kSf9I-I"
                     locations={this.props.locations}
@@ -52,7 +51,7 @@ class Map extends Component {
                     mapElement={<div style={{ height: `100%` }} />}
                     showInfoWindow={this.props.showInfoWindow}
                 />
-            </div>
+            </section>
 
         );
     }

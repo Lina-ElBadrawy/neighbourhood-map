@@ -81,3 +81,7 @@ select {
   background-color:rgb(50,50,50);
   color: #fff;
 }
+.neighborhood-map .info-window{
+  color:initial
+
+}

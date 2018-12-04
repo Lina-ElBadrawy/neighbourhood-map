@@ -9,7 +9,7 @@ class ListView extends Component {
       <section className="list-secion">
         <ul className="loc-list-view">
           {locations.map((location) => (
-            <li key={location.venue.id} className="loc-list-item"
+            <li key={location.venue.id} className={"loc-list-item "+ (location.show?"selected":"unselected")}
             onClick={() => showInfoWindow(location.venue)} >
               {location.venue.name}
             </li>
