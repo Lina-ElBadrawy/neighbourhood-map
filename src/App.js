@@ -17,16 +17,14 @@ class App extends Component {
     dataLoaded: false,
     loadFailed: false,
 
-
-
   }
-
-
   componentDidMount() {
+    //Load pzza restaurants in cairo using foursquare
     if (!this.state.dataLoaded) {
       Api.getData("cairo", "pizza").then(response => {
         this.setState({ locations: response });
         this.setState({ filteredLocations: response });
+        //extract cities for filteration
         let cities = this.state.locations.map((l) => {
           return l.venue.location.city
 
@@ -37,7 +35,6 @@ class App extends Component {
         this.setState({ dataLoaded: true });
 
         console.log("dataLoaded", this.state.dataLoaded)
-        console.log("loadFailed", this.state.loadFailed)
         console.log("API: ", this.state.locations);
       }
       ).catch(error => {
@@ -46,8 +43,6 @@ class App extends Component {
 
       });
     }
-
-
   }
 
   showInfoWindow = (location) => {
@@ -60,13 +55,13 @@ class App extends Component {
 
   }
   filterLocationsList = (city) => {
+    //Show all locations if default select is selected
     if (city != "select") {
       this.setState((state) => ({
         filteredLocations: state.locations.filter((l) => (l.venue.location.city === city))
       }))
     }
     else this.setState({ filteredLocations: this.state.locations });
-
     console.log(this.state.filteredLocations);
   }
 
@@ -85,7 +80,6 @@ class App extends Component {
                 <h3>Cairo Pizza Restaurants</h3>
               </header>
               <Filter
-
                 cities={cities}
                 filterLocationsList={this.filterLocationsList}
               >
@@ -102,9 +96,6 @@ class App extends Component {
               locations={filteredLocations}
               showInfoWindow={this.showInfoWindow}
             ></Map>)
-
-
-
           }
           {this.state.loadFailed && ( <h3 class="error">Api Failed!!!</h3>)}
           {!this.state.dataLoaded && !this.state.loadFailed &&(
@@ -115,10 +106,7 @@ class App extends Component {
           <img class="logo" src={fsLogo} alt="Powered by foursquare" />
           <h4 class="text">Powered by Foursquare </h4>
         </div>
-
-
       </div>
-
     );
   }
 }

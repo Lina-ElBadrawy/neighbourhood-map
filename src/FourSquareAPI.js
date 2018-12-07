@@ -3,7 +3,6 @@ var clientSecret = "NCHE0MDBXS5AUHIFZEWY4O33PF14QEKVSKG1BQB54ZBTA12D";
 
 export function getData(location,query) {
    let locations=[];
-
  
      return  fetch(`https://api.foursquare.com/v2/venues/explore?near=${location}&query=${query}&limit=10` +
         `&client_id=${clientId}` +

@@ -2,15 +2,7 @@ import React, { Component } from 'react';
 
 
 class Filter extends Component {
-  /* state={
-    value:'select'
-  }
-  change(event){
-    debugger;
-    let city=event.target.value
-   // this.setState({value:city});
-    this.props.filterLocationsList(city);
-  }*/
+ 
     render() {
       const { locations, 
         cities,

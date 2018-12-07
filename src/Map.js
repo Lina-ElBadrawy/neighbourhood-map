@@ -4,15 +4,11 @@ const mapCenter = { lat: 30.0597203445974, lng: 31.221991181373593 }; //cairo
 const defaultZoom = 15;
 const orangeMarker = 'https://maps.google.com/mapfiles/ms/icons/orange-dot.png';
 const redMarker = 'https://maps.google.com/mapfiles/ms/icons/red-dot.png';
-//30.0444° N, 31.2357° E
-//30.0609° N, 31.2197
+
 const NeighborhoodMap = withScriptjs(withGoogleMap((props) =>
     <GoogleMap
         defaultZoom={props.zoom}
         defaultCenter={props.center}
-
-
-
     >
         {props.locations.map((location) => {
             return (
