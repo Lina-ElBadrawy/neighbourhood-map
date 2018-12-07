@@ -25,7 +25,8 @@ Then run "http-server"
 Then navigate to [http://localhost:8080/]
 
 ## Note 
-You should have node.js intsalled as prerequisite
+You should have node.js intsalled as prerequisite 
+
 Service Worker will only run in production mode
 
 
