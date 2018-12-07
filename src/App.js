@@ -5,6 +5,8 @@ import ListView from './ListView';
 import Map from './Map';
 import * as Api from './FourSquareAPI';
 import './App.css';
+import * as fsLogo from './images/foursquares.png';
+
 
 class App extends Component {
 
@@ -13,7 +15,8 @@ class App extends Component {
     filteredLocations: [],
     cities: [],
     dataLoaded: false,
-   
+    loadFailed: false,
+
 
 
   }
@@ -32,13 +35,14 @@ class App extends Component {
           cities: [...new Set(cities)]
         });
         this.setState({ dataLoaded: true });
-        
+
         console.log("dataLoaded", this.state.dataLoaded)
         console.log("loadFailed", this.state.loadFailed)
         console.log("API: ", this.state.locations);
       }
       ).catch(error => {
-       alert("loading failed")
+        this.setState({ loadFailed: true });
+        console.log("loadFailed", this.state.loadFailed);
 
       });
     }
@@ -74,33 +78,45 @@ class App extends Component {
     const cities = this.state.cities;
     return (
       <div className="app">
-        {this.state.dataLoaded && (
-          <div className="left-Panel">
-            <header>
-              <h3>Cairo Pizza Restaurants</h3>
-            </header>
-            <Filter
+        <div class="row1">
+          {this.state.dataLoaded && !this.state.loadFailed && (
+            <div className="left-Panel">
+              <header>
+                <h3>Cairo Pizza Restaurants</h3>
+              </header>
+              <Filter
 
-              cities={cities}
-              filterLocationsList={this.filterLocationsList}
-            >
+                cities={cities}
+                filterLocationsList={this.filterLocationsList}
+              >
 
-            </Filter>
-            <ListView
+              </Filter>
+              <ListView
+                locations={filteredLocations}
+                showInfoWindow={this.showInfoWindow}
+              ></ListView>
+            </div>)}
+
+          {this.state.dataLoaded && !this.state.loadFailed && (
+            <Map
               locations={filteredLocations}
               showInfoWindow={this.showInfoWindow}
-            ></ListView>
-          </div>)}
-        
-        {this.state.dataLoaded && (
-          <Map
-            locations={filteredLocations}
-            showInfoWindow={this.showInfoWindow}
-          ></Map>)
-        }
-         { !this.state.dataLoaded &&(
-           <h3>Loading ..</h3>
-         )}
+            ></Map>)
+
+
+
+          }
+          {this.state.loadFailed && ( <h3 class="error">Api Failed!!!</h3>)}
+          {!this.state.dataLoaded && !this.state.loadFailed &&(
+            <h3>Loading ..</h3>
+          )}
+        </div>
+        <div class="powered row">
+          <img class="logo" src={fsLogo} alt="Powered by foursquare" />
+          <h4 class="text">Powered by Foursquare </h4>
+        </div>
+
+
       </div>
 
     );

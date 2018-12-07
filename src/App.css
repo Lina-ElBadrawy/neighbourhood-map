@@ -6,10 +6,10 @@ font-size:14px;
 font-style:normal
 
 }
-.app{
+.app .row1{
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  min-height: calc(100vh - 42px);
  
 }
 .left-Panel{
@@ -89,9 +89,30 @@ select {
 header{
   padding: 0.8rem;
 }
-
+.powered{
+  display:flex;
+  flex-direction: row;
+  background: #fff;
+    color: #000;
+    align-self: center;
+}
+.powered .logo{
+  height: 40px;
+  width:40px;
+}
+.powered .text{
+  display: inline;
+  margin: 0;
+  text-align: center;
+  line-height: 3;
+}
+.error{
+  width: 100%;
+  padding: 1rem;
+  color: #fff;
+}
 @media screen and (max-width: 799px) {
-  .app{
+  .app .row1{
     display: flex;
     flex-direction: column;
    
